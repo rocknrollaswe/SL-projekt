@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min hållplats</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="header">
+        <div class="imagecontainer">
+            <img src="img/Stockholm-HD-Wallpaper.jpg" alt="Stockholm">
+        </div>
+        <h1>Min hållplats</h1>
+        <input class="ovals" type="text" id="myStation" placeholder="Skriv in din hållplats..." name="myStation" value="Rågsved" onkeydown="if(event.keyCode === 13){GetStations();}"><br>
+            <p>Jag vill resa med:</p>
+            <form>
+                <input type="checkbox" name="metro" id="metro" value="metro" checked="true"><label id="metroLabel" for="metro">Tunnelbana</label>
+                <input type="checkbox" name="tram" id="tram" value="tram" checked=true><label id="tramLabel" for="tram">Pendeltåg/Tvärbana</label>
+                <input type="checkbox" name="bus" id="bus" value="bus" checked="true"><label id="busLabel" for="bus">Buss</label>
+            </form>
+    </div>
+   
+ 
+    <div id="gridheader"></div>
+    <div id="grid-area">
+        <!-- Area to populate departures --> 
+    </div>
+    <div class="footer">
+        <p id="demo">Här ska det stå nåt</p>
+    </div>
+
+
+    <script src="functions.js"></script>
+</body>
+</html>

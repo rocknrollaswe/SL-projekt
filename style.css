@@ -17,11 +17,11 @@
 body{
     display:inline;
     color:cornsilk;
-    background: linear-gradient(rgb(8, 93, 87) 25%, black 75%);
+    background-color: rgb(48, 86, 83);
     text-align:center;
     font-size: 25px;
     font-family: headerFont;
-   
+    
 }
 body div{
     text-align: center;
@@ -29,7 +29,8 @@ body div{
 
 img{
     display:inline;
-    min-height:500px;
+    min-height:600px;
+    max-height: 800px;
     max-width: 100%;
     object-fit: cover;
     opacity: 0.3;
@@ -41,91 +42,114 @@ img{
     
 }
 
+.header{
+    min-height: 400px;
+}
+
+.h1container{
+    max-width:200px;
+    text-align: center;
+    margin-right: auto;
+    margin-left:auto;
+   
+}
+
 .header h1{
     padding:30px;
-    padding-bottom:0;
+    padding-bottom:0px;
+    margin-bottom: 0px;
+   
 }
+
+.h1container:hover{
+    text-shadow: 2px 2px 4px darkorange, -2px -2px 2px darkorange;
+}
+
+.header p {
+    margin-top:10px;
+    margin-bottom:10px;
+
+}
+
 .header input{
     border-radius: 20px;
-    height:40px;
-    padding:10px;
-    font-size: 15px;
-    text-align: left;
+    height:35px;
+    max-width: 200px;
+    box-shadow: 3px 3px 3px 3px rgba(22, 22, 23, 0.802);
+    padding:20px 5px;
+    font-size: 20px;
+    text-align: center;
     border:none;
     background-color: cornsilk;
-    
+    margin:5px 50px;
+    margin-bottom:70px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-.header form input{
-    visibility: hidden;
-}
-
-
-.header label:before{
-    width:40px;
-    height:50px;
+.header label:after{
+    width:60px;
+    height:60px;
     background-repeat: no-repeat;
     display:inline-block;
     content:"";
     background-size: 100%;
     position:relative;
-    top:15px;
+    top:8px;
+    right:0px;
+    z-index: -1;
+    
 }
 
-#metroLabel:before{
+#metroLabel:after{
     background-image: url(icons/metro.png);
 }
-#tramLabel:before{
+#tramLabel:after{
     background-image: url(icons/tram.png);
 }
-#busLabel::before{
+#busLabel:after{
     background-image: url(icons/bus.png);
 }
-.ovals{
-    box-shadow: 1px 1px 1px 2px black;
-}
+
 
 form{
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     width:100%;
+    margin-top:5px;
+    align-items: center;
+}
+fieldset{
+   
+    flex:1 1 50%;
+    border:none;
+    max-width: 200px;
+    padding:10px;
    
 }
+
+form label{
+    min-width:30px;
+    font-size: 25px;
+    
+}
+
 form input{
-    background-color:red ;
+    
     width: 20px;
-    margin:0;
-    padding:0;
     border:none;
-
+    display:none;
 }
-
-
-.header button{
-    margin-top:10px;
-    display: inline-block;  
-    background-color: rgb(13, 52, 66);
-    height:60px;
-    width: 200px;
-    border-radius: 20px;
-    color:lightblue;
-    font-size: 20px;
-    border:none;
-    box-shadow: 1px 1px 1px 2px black;
-}
-.header button:hover{
-    background-color: rgb(27, 61, 73);
-}
-
 
 #grid-area{
     display:grid;
-    min-height:700px;
+    
     margin-bottom: 0;
     grid-template-columns:1fr 1fr 1fr;
     margin-top:0;
     grid-gap:10px;
     padding:10px;
-    font-size: 25px;
+    font-size: 22px;
     font-family: lcdfont;
     position:relative; padding-top:50px;
     background-color: black;
@@ -139,17 +163,17 @@ form input{
     
     position: relative;
     display:block;
-    height:120px;
+    height:90px;
     font-family: headerFont;
-    font-size: 35px;
+    font-size: 25px;
     margin-bottom:0;
     text-align:left;
     background-color: rgb(10, 10, 96);
     color:yellow;
-    padding:30px;
-    
-    
+    padding:20px;
 }
+
+
 
 .transportHeader{
     grid-column-end: span 3;
@@ -168,3 +192,11 @@ form input{
     grid-column:3;
 }
 
+.footer{
+    background-color: black;
+    height:280px;
+    color:darkorange;
+}
+.footer p {
+    padding:0px 90px;
+}

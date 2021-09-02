@@ -12,14 +12,16 @@
     
     <div class="header"> 
         <img src="img/Stockholm-HD-Wallpaper.jpg" alt="Stockholm">
-       
-        <h1>Min hållplats</h1>
-        <input class="ovals" type="text" id="myStation" placeholder="Skriv in din hållplats..." name="myStation" value="Rågsved" onkeydown="if(event.keyCode === 13){GetStations();}"><br>
+        <div class="h1container">
+            <h1>Min hållplats</h1>
+        </div>
+        <p>är</p>
+        <input type="text" id="myStation" placeholder="Skriv in din hållplats..." name="myStation" value="Rågsved" onkeydown="if(event.keyCode === 13){GetStations();}"><br>
             <p>Jag vill resa med:</p>
             <form>
-                <input type="checkbox" name="metro" id="metro" value="metro" checked="true"><label id="metroLabel" for="metro">Tunnelbana</label>
-                <input type="checkbox" name="tram" id="tram" value="tram" checked=true><label id="tramLabel" for="tram">Pendeltåg/Tvärbana</label>
-                <input type="checkbox" name="bus" id="bus" value="bus" checked="true"><label id="busLabel" for="bus">Buss</label>
+                <fieldset id="metroOn"><label  id="metroLabel" for="metro">Tunnelbana<input type="checkbox" name="metro" id="metro" value="metro" checked="true"></label></fieldset>
+                <fieldset id="tramOn"> <label  id="tramLabel" for="tram">Tvärbana<input type="checkbox" name="tram" id="tram" value="tram" checked=true></label><br></fieldset>
+                <fieldset id="busOn"> <label id="busLabel" for="bus">Buss<input type="checkbox" name="bus" id="bus" value="bus" checked="true"></label></fieldset> 
             </form>
     </div>
    
@@ -28,7 +30,9 @@
     <div id="grid-area">
         <!-- Area to populate departures --> 
     </div>
-    
+    <div class="footer">
+        <p id="footerText">(Markera vilka färdsätt du vill använda.)</p>
+    </div>
 
     <script src="functions.js"></script>
 </body>

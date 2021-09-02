@@ -10,18 +10,26 @@ let metroCheck = document.getElementById("metro");
 let busCheck = document.getElementById("bus");
 let tramCheck = document.getElementById("tram");
 var crd; 
+var footerText = document.getElementById("footerText");
+var metroOn = document.getElementById("metroOn");
+var tramOn = document.getElementById("tramOn");
+var busOn = document.getElementById("busOn");
+
+
 
 
  //As soon as the page has loaded runs these functions
 document.body.onload = function() {
     GetStations();
-    GetSiteId(); 
+    //GetSiteId(); 
 }
+
+
 
 //Interval for calling Api-functions
 setInterval( function() {GetStations(); console.log("updated grid!") }, 60000);
 
-var options = {
+/*var options = {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0
@@ -40,7 +48,7 @@ var options = {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
   
-  navigator.geolocation.getCurrentPosition(success, error, options);
+  navigator.geolocation.getCurrentPosition(success, error, options);*/
   
 
 
@@ -53,11 +61,30 @@ function ClearElements(id){
 
 }
 
-//events for checkboxes
-metroCheck.onchange = GetStations; 
-busCheck.onchange = GetStations;
-tramCheck.onchange = GetStations; 
+function ChangeFieldsetBackColor(id, labelId){
+    if(id.checked){
+        
+        labelId.style.opacity = "1";
+    }
+    else{
+        
+        labelId.style.opacity = "0.3";
+    }
+}
 
+//events for checkboxes
+metroCheck.onchange = function () {
+    GetStations();
+    ChangeFieldsetBackColor(metroCheck, metroLabel); 
+}
+busCheck.onchange =  function () {
+    GetStations();
+    ChangeFieldsetBackColor(busCheck, busLabel); 
+}
+tramCheck.onchange =  function () {
+    GetStations();
+    ChangeFieldsetBackColor(tramCheck, tramLabel); 
+}
 
 //Fetches the ID for the station the user entered
 function GetStations(){
@@ -98,7 +125,7 @@ function GetStations(){
         })   
 }
 //..And again from a different API because of reasons with SL and LocationID :/
-function GetSiteId(input){
+/*function GetSiteId(input){
     
     var inputField = document.getElementById("myStation").value;
     const url = `https://api.resrobot.se/v2/location.name.json?key=${apiKey_SL_ReseRobotReseplanerare}&input=${inputField}`
@@ -116,10 +143,8 @@ function GetSiteId(input){
         .catch(function(error){
             console.log(error);
         })
-
-        
-   
-}
+  
+}*/
 
 
 //Gets the timetable for the chosen station, checking if checkboxes are checked and fetching the checked transport accordingly
@@ -179,7 +204,7 @@ function GetLineDepartures(siteId){
                 }
                 else{
                     var header = document.createElement("div");
-                    header.innerHTML = "Ingen tunnelbana vid aktuell hållplats";
+                    header.innerHTML = "Ingen tunnelbana vid aktuell hållplats" + "<br>" + "-----";
                     header.className = "transportHeader";
                     grid_area.appendChild(header);
                 }    
@@ -220,7 +245,7 @@ function GetLineDepartures(siteId){
                 }
                 else{
                     var header = document.createElement("div");
-                    header.innerHTML = "Inga bussar vid aktuell hållplats";
+                    header.innerHTML = "Inga bussar vid aktuell hållplats" + "<br>" + "-----";
                     header.className = "transportHeader";
                     grid_area.appendChild(header);
                     header.setAttribute("style", "grid-column-end:span 3;")
@@ -232,7 +257,7 @@ function GetLineDepartures(siteId){
 
                 if(respData.Trams.length > 0){
                     var header = document.createElement("div");
-                    header.innerHTML = "Pendeltåg/tvärbana mot:";
+                    header.innerHTML = "Tvärbana mot:";
                     header.className = "transportHeader";
                     grid_area.appendChild(header);
                     header.setAttribute("style", "grid-column-end:span 3;")
@@ -262,7 +287,7 @@ function GetLineDepartures(siteId){
 
                 else{
                     var header = document.createElement("div");
-                    header.innerHTML = "Tvärbana/pendeltåg ej aktuell för hållplatsen";
+                    header.innerHTML = "Tvärbana ej aktuell för hållplatsen" + "<br>" + "-----";
                     header.className = "transportHeader";
                     grid_area.appendChild(header);
                     header.setAttribute("style", "grid-column-end:span 3;")
@@ -276,7 +301,7 @@ function GetLineDepartures(siteId){
 }
 
 
-function GetDistanceToStation(destId){
+/*function GetDistanceToStation(destId){
 
     
     var userLat = crd.latitude;
@@ -297,7 +322,4 @@ function GetDistanceToStation(destId){
 
     console.log(locationLat); 
     console.log(locationLong); 
-
-     
-
-}
+}*/
